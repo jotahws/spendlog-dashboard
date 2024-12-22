@@ -49,13 +49,19 @@ export function PeriodChart({ expenses }: Props) {
   };
 
   const [data, setData] = React.useState<DailyTotal[]>(
-    getTotalsByPeriod(expenses, defaultPeriod, new Date())
+    getTotalsByPeriod({
+      expenses,
+      period: defaultPeriod,
+      startDate: new Date(),
+    })
   );
   const [period, setPeriod] = React.useState<Period>(defaultPeriod);
 
   const handleTabChange = (value: Period) => {
     setPeriod(value);
-    setData(getTotalsByPeriod(expenses, value, new Date()));
+    setData(
+      getTotalsByPeriod({ expenses, period: value, startDate: new Date() })
+    );
   };
 
   const getPeriodDateLabel = (date: Date) => {

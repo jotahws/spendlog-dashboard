@@ -61,13 +61,17 @@ export interface DailyTotal {
     date: Date;
     total: number;
 }
-
-export const getTotalsByPeriod = (
+export const getTotalsByPeriod = ({
+    expenses,
+    period,
+    startDate,
+    customDuration,
+}: {
     expenses: Expense[],
     period: 'daily' | 'weekly' | 'monthly' | 'yearly',
     startDate: Date,
-    customDuration?: number
-): DailyTotal[] => {
+    customDuration?: number,
+}): DailyTotal[] => {
     let periodDuration: number;
     let periodIncrement: number;
 

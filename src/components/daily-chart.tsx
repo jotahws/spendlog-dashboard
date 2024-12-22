@@ -29,11 +29,22 @@ interface Props {
 export function DailyChart({ expenses }: Props) {
   const period = 'daily';
   const [data, setData] = React.useState<DailyTotal[]>(
-    getTotalsByPeriod(expenses, period, new Date())
+    getTotalsByPeriod({
+      expenses,
+      period,
+      startDate: new Date(),
+    })
   );
 
   const handleTabChange = (duration: number) => {
-    setData(getTotalsByPeriod(expenses, period, new Date(), duration));
+    setData(
+      getTotalsByPeriod({
+        expenses,
+        period,
+        startDate: new Date(),
+        customDuration: duration,
+      })
+    );
   };
 
   return (

@@ -48,7 +48,7 @@ export const ExpenseSchema = z.object({
     hash: z.string().optional(),
     certificateNumber: z.string().optional(),
     additionalInformation: z.string().optional(),
-}).strict();
+});
 
 export const ExpenseListSchema = z.array(ExpenseSchema)
 
@@ -94,7 +94,7 @@ export const ExpenseFormattedSchema = z.object({
     hash: z.string().optional(),
     certificateNumber: z.string().optional(),
     additionalInformation: z.string().optional(),
-}).strict();
+});
 
 export type Expense = z.infer<typeof ExpenseSchema>;
 export type ExpenseFormatted = z.infer<typeof ExpenseFormattedSchema>;
