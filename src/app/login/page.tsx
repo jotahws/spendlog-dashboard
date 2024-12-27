@@ -28,7 +28,7 @@ export default function LoginForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    document.cookie = `Authorization=Bearer ${values.apiKey}; path=/;`;
+    document.cookie = `Authorization=Bearer ${values.apiKey}; path=/; SameSite=None; Secure expires=Fri, 31 Dec 9999 23:59:59 GMT;`;
     window.location.href = '/';
   }
 
