@@ -8,7 +8,6 @@ import { z } from "zod";
 
 export const ExpenseSchema = z.object({
     _id: z.string().optional(),
-    merchantVatNumber: z.string().optional(),
     customerVatNumber: z.string().optional(),
     customerCountry: z.string().optional(),
     documentType: z.string().optional(),
@@ -48,13 +47,16 @@ export const ExpenseSchema = z.object({
     hash: z.string().optional(),
     certificateNumber: z.string().optional(),
     additionalInformation: z.string().optional(),
+    merchantVatNumber: z.string().optional().nullable(),
+    merchantName: z.string().optional().nullable(),
+    merchantAddress: z.string().optional().nullable(),
+    merchantActivity: z.string().optional().nullable(),
 });
 
 export const ExpenseListSchema = z.array(ExpenseSchema)
 
 export const ExpenseFormattedSchema = z.object({
     _id: z.string().optional(),
-    merchantVatNumber: z.string().optional(),
     customerVatNumber: z.string().optional(),
     customerCountry: z.string().optional(),
     documentType: z.string().optional(),
@@ -94,6 +96,10 @@ export const ExpenseFormattedSchema = z.object({
     hash: z.string().optional(),
     certificateNumber: z.string().optional(),
     additionalInformation: z.string().optional(),
+    merchantVatNumber: z.string().optional().nullable(),
+    merchantName: z.string().optional().nullable(),
+    merchantAddress: z.string().optional().nullable(),
+    merchantActivity: z.string().optional().nullable(),
 });
 
 export type Expense = z.infer<typeof ExpenseSchema>;

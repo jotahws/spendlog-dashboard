@@ -15,13 +15,12 @@ const renderHeader = ({
   name: string;
   column: Column<Expense>;
 }) => (
-  <div>
+  <div className="flex w-full items-center justify-start">
     {name}
     <Button
       variant="ghost"
       size={'sm'}
       onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-      className="ml-1"
     >
       <ArrowUpDown />
     </Button>
@@ -30,8 +29,8 @@ const renderHeader = ({
 
 export const columns: ColumnDef<Expense>[] = [
   {
-    accessorKey: 'atcud',
-    header: ({ column }) => renderHeader({ name: 'ATCUD', column }),
+    accessorKey: 'merchantName',
+    header: ({ column }) => renderHeader({ name: 'Merchant', column }),
   },
   {
     accessorKey: 'totalAmount',
@@ -52,10 +51,6 @@ export const columns: ColumnDef<Expense>[] = [
           (row.getValue('totalAmount') as number)) *
         100
       ).toFixed(2)}%`,
-  },
-  {
-    accessorKey: 'merchantVatNumber',
-    header: ({ column }) => renderHeader({ name: 'Merchant VAT', column }),
   },
   {
     accessorKey: 'documentDate',

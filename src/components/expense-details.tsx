@@ -9,7 +9,6 @@ export default async function ExpenseDetails({
   const DetailStringMap: Record<keyof Expense, string> = {
     _id: 'ID',
     atcud: 'ATCUD',
-    merchantVatNumber: 'Merchant VAT Number',
     customerVatNumber: 'Customer VAT Number',
     customerCountry: 'Customer Country',
     documentType: 'Document Type',
@@ -48,12 +47,18 @@ export default async function ExpenseDetails({
     certificateNumber: 'Certificate Number',
     documentDate: 'Document Date',
     additionalInformation: 'Additional Information',
+    merchantVatNumber: 'Merchant NIF',
+    merchantName: 'Merchant',
+    merchantAddress: 'Merchant Address',
+    merchantActivity: 'Merchant Activity',
   };
 
   const renderDetail = (key: keyof Expense) => (
     <TableRow key={key}>
-      <TableCell className="font-semibold">{DetailStringMap[key]}</TableCell>
-      <TableCell>{String(expense?.[key])}</TableCell>
+      <TableCell className="font-semibold w-1/2">
+        {DetailStringMap[key]}
+      </TableCell>
+      <TableCell className="w-1/2">{String(expense?.[key])}</TableCell>
     </TableRow>
   );
 
